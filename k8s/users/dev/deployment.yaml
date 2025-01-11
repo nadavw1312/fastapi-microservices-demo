@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: users-service-dev
+  namespace: development
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: users-service
+  template:
+    metadata:
+      labels:
+        app: users-service
+        environment: development
+    spec:
+      containers:
+        - name: users
+          image: nadavw1312/users-service:latest
+          ports:
+            - containerPort: 8000
+            - containerPort: 5678  # Debugpy port
+          volumeMounts:
+            - name: users-code
+              mountPath: /app
+          env:
+            - name: DATABASE_URL
+              value: "postgresql+asyncpg://users_user:users_password@users-db-dev:5432/users_db"
+            - name: RABBITMQ_HOST
+              value: "rabbitmq"
+            - name: RABBITMQ_USER
+              value: "user"
+            - name: RABBITMQ_PASSWORD
+              value: "password"
+          command: ["sh", "-c"]
+          args:
+            - |
+              python -m debugpy --listen 0.0.0.0:5678 --wait-for-client & \
+              uvicorn users_service.main:app --host 0.0.0.0 --port 8000 --reload
+      volumes:
+        - name: users-code
+          hostPath:
+            path: /run/desktop/mnt/host/c/Users/nadav/nadav-projects/python-projects/microservices-demo/users_service
+            type: DirectoryOrCreate

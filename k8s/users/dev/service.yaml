@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: users-service-dev  # Expose Users service
+  namespace: development
+spec:
+  selector:
+    app: users-service
+    environment: development
+  type: NodePort
+  ports:
+    - name: http
+      protocol: TCP
+      port: 8000  # FastAPI port
+      targetPort: 8000
+      nodePort: 30000  # Access via localhost:30000
+    - name: debug
+      protocol: TCP
+      port: 5678  # Debugpy port
+      targetPort: 5678
+      nodePort: 30001

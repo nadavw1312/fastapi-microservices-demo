@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rabbitmq-dev
+  labels:
+    app: rabbitmq
+    environment: development
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rabbitmq
+      environment: development
+  template:
+    metadata:
+      labels:
+        app: rabbitmq
+        environment: development
+    spec:
+      containers:
+        - name: rabbitmq
+          image: rabbitmq:3-management  # Includes the management UI
+          ports:
+            - containerPort: 5672  # AMQP protocol
+            - containerPort: 15672  # Management UI
+          env:
+            - name: RABBITMQ_DEFAULT_USER
+              value: devuser
+            - name: RABBITMQ_DEFAULT_PASS
+              value: devpassword

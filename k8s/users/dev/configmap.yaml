@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: users-service-config  # Shared ConfigMap for all services
+  namespace: development
+data:
+  ENV: "development"  # Environment setting
+  DATABASE_URL: "postgresql+asyncpg://users_user:users_password@users-db-dev:5432/users_db"
+  # Shared PostgreSQL connection string for all services

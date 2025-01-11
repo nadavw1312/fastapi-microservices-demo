@@ -1,0 +1,24 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: users-alembic-migration  # Alembic job for database migrations
+  namespace: development
+spec:
+  backoffLimit: 3  # Retry limit for failed jobs
+  template:
+    metadata:
+      labels:
+        app: users-alembic-migration
+    spec:
+      containers:
+      - name: alembic
+        image: nadavw1312/users-alembic-service:latest  # Alembic Docker image
+        command: ["sh", "-c"]  # Use shell for multi-command execution
+        args: ["alembic upgrade head && sleep 3600"]  # Run migrations and keep the pod alive
+        env:
+        - name: DATABASE_URL  # Use DATABASE_URL from ConfigMap
+          valueFrom:
+            configMapKeyRef:
+              name: users-service-config
+              key: DATABASE_URL
+      restartPolicy: Never  # Don't restart after completion

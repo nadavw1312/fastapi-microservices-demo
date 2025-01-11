@@ -1,0 +1,27 @@
+from pydantic import EmailStr
+from typing_extensions import Annotated
+from typing import List
+from typing import Optional
+from sqlalchemy import ForeignKey
+from sqlalchemy import String
+from sqlalchemy.orm import DeclarativeBase
+from sqlalchemy.orm import Mapped
+from sqlalchemy.orm import mapped_column
+from sqlalchemy.orm import relationship
+from users_service.db.model import INTPK, STR50, Base
+
+
+
+# set up mapped_column() overrides, using whole column styles that are
+user_fk = Annotated[int, mapped_column(ForeignKey("user_account.id"))]
+
+
+class User(Base):
+    __tablename__ = "user_account"
+
+    id: Mapped[INTPK]
+    name: Mapped[STR50]
+    email: Mapped[str]
+    password: Mapped[str]
+    newProp: Mapped[STR50]
+    

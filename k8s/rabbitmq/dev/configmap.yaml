@@ -1,0 +1,11 @@
+# k8s/rabbitmq/configmap-dev.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rabbitmq-config-dev
+  labels:
+    app: rabbitmq
+    environment: development
+data:
+  RABBITMQ_HOST: "rabbitmq-dev"
+  RABBITMQ_PORT: "5672"

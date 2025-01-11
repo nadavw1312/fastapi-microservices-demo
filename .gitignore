@@ -1,0 +1,81 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.env
+*.venv
+venv/
+ENV/
+env/
+Pipfile.lock
+poetry.lock
+
+# Byte-compiled / optimized / DLL files
+*.so
+*.dylib
+*.dll
+
+# Alembic Migration Files (Keep versions, ignore temporary files)
+users_service/alembic/versions/*.pyc
+users_service/alembic/versions/__pycache__/
+
+# Environment Variables
+.env
+*.env.*
+
+# Logs
+*.log
+logs/
+*.out
+*.err
+
+# Unit test / coverage reports
+.coverage
+.tox/
+.nox/
+.cache/
+pytest_cache/
+htmlcov/
+coverage.xml
+
+# Docker
+*.dockerfile
+Dockerfile.*
+docker-compose.override.yml
+
+# Docker volumes (optional, depending on your use case)
+volumes/
+
+# Kubernetes
+*.yaml~
+*.yml~
+k8s/tmp/
+k8s/**/__pycache__/
+
+# VSCode
+.vscode/
+.history/
+
+# MacOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# IDEs
+.idea/
+*.iml
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# Temporary files
+*.bak
+*.swp
+*.tmp
