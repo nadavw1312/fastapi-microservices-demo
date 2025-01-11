@@ -1,0 +1,6 @@
+[MESSAGES CONTROL]
+enable=unused-import, import-error, cyclic-import
+
+[TYPECHECK]
+ignored-modules=
+ignored-classes=

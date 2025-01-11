@@ -1,10 +1,11 @@
 import os
+import logging
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
-from users_service.api.routes import users_routes
-from users_service.db.database import DB_MANAGER
-import logging
-from users_service.api.middlewares.error_handler_middleware import ErrorHandlerMiddleware
+from src.api.middlewares.error_handler_middleware import ErrorHandlerMiddleware
+from src.db.database import DB_MANAGER
+from src.user import user_api
+
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -42,8 +43,8 @@ app = FastAPI(
 app.add_middleware(ErrorHandlerMiddleware)
 
 # Include API routes
-app.include_router(users_routes.router, prefix="/users", tags=["Users"])
+app.include_router(user_api.router, prefix="/users", tags=["Users"])
 
 @app.get("/")
 async def read_root():
-    return {"message": "Welcome to the Users Service"}
+    return {"message": "Welcome to the Users Service!!"}

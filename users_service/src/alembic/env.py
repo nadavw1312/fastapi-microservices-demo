@@ -5,9 +5,9 @@ from sqlalchemy import pool
 
 from alembic import context
 # Import the Base from model.py
-from users_service.db.model import Base  
+from src.db.model import Base  
 # Import all models to ensure Alembic detects them
-from users_service.dal.user_models import User  
+from src.user.user_models import User  
 
 
 

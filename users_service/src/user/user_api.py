@@ -1,8 +1,10 @@
 from fastapi import APIRouter, Depends
-from users_service.api.users_api_schemas import UserCreate, UserResponse
-from users_service.bl.users_bl import create_user, get_user
+from src.db.database import get_db_session
+
 from sqlalchemy.ext.asyncio import AsyncSession
-from users_service.db.database import get_db_session
+from src.user.user_api_schemas import UserCreate, UserResponse
+from src.user.user_bl import create_user, get_user
+
 
 
 

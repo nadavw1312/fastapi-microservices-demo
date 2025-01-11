@@ -5,8 +5,9 @@ from sqlalchemy.ext.asyncio import AsyncEngine
 from typing import AsyncGenerator
 import logging
 
-from users_service.config import DATABASE_URL
-from users_service.db.model import Base
+from src.config import DATABASE_URL
+
+
 
 logger = logging.getLogger(__name__)
 

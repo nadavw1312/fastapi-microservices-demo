@@ -1,12 +1,8 @@
-import sqlalchemy
+from typing import Optional
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
-from sqlalchemy.orm import joinedload
-
-from typing import Optional
-
-from users_service.api.users_api_schemas import UserCreate
-from users_service.dal.user_models import User
+from src.user.user_api_schemas import UserCreate
+from src.user.user_models import User
 
 # Add user to the database
 async def add_user(session: AsyncSession,user: UserCreate) -> User:

@@ -18,4 +18,4 @@ EXPOSE 8000 5678
 ENV DEBUGPY_ENABLE=true
 
 # Start the application with uvicorn
-CMD ["uvicorn", "users_service.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "8000"]

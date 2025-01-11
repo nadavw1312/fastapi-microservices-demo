@@ -1,8 +1,6 @@
-
-
-from users_service.api.users_api_schemas import UserCreate, UserResponse
-from users_service.dal.users_dal import add_user, fetch_user
 from sqlalchemy.ext.asyncio import  AsyncSession
+from src.user.user_api_schemas import UserCreate, UserResponse
+from src.user.user_dal import add_user, fetch_user
 
 
 async def create_user(session: AsyncSession,user: UserCreate) -> UserResponse:

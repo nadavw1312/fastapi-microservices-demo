@@ -1,14 +1,14 @@
+from src.db.model import INTPK, Base
 from typing_extensions import Annotated
 from sqlalchemy import ForeignKey
 from sqlalchemy.orm import Mapped
 from sqlalchemy.orm import mapped_column
-from sqlalchemy.orm import relationship
-from users_service.db.model import INTPK, STR50, Base
+
 
 
 
 # set up mapped_column() overrides, using whole column styles that are
-user_fk = Annotated[int, mapped_column(ForeignKey("user_account.id"))]
+USER_FK = Annotated[int, mapped_column(ForeignKey("user_account.id"))]
 
 
 class User(Base):
