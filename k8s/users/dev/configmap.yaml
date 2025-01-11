@@ -5,5 +5,5 @@ metadata:
   namespace: development
 data:
   ENV: "development"  # Environment setting
-  DATABASE_URL: "postgresql+asyncpg://users_user:users_password@users-db-dev:5432/users_db"
+  DATABASE_URL: "postgresql+asyncpg://postgres:2985@users-db-dev:5432/users-db-dev"
   # Shared PostgreSQL connection string for all services

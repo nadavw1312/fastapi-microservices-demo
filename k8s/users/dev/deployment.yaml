@@ -25,7 +25,10 @@ spec:
               mountPath: /app
           env:
             - name: DATABASE_URL
-              value: "postgresql+asyncpg://users_user:users_password@users-db-dev:5432/users_db"
+              valueFrom:
+                configMapKeyRef:
+                  name: users-service-config
+                  key: DATABASE_URL
             - name: RABBITMQ_HOST
               value: "rabbitmq"
             - name: RABBITMQ_USER

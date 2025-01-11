@@ -4,13 +4,10 @@ metadata:
   name: users-db-dev  # PostgreSQL service
   namespace: development
 spec:
-  selector:
-    app: users-db
-    environment: development
-  type: NodePort  # Expose DB on a local port
+  type: ExternalName  # Allows redirection to external services
+  externalName: host.docker.internal  # Points to your local machine (Mac/Windows)
   ports:
     - name: postgres
       protocol: TCP
       port: 5432
       targetPort: 5432
-      nodePort: 32000  # Access via localhost:32000

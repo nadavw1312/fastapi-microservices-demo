@@ -33,15 +33,15 @@ class DatabaseSessionManager:
                     self.engine, expire_on_commit=False
                 )
                 
-                # Use run_sync to create tables
-                async def create_tables():
-                    async with self.engine.begin() as conn:
-                        await conn.run_sync(Base.metadata.create_all)
-                        logger.info("Create Database tables")
+                # # Use run_sync to create tables
+                # async def create_tables():
+                #     async with self.engine.begin() as conn:
+                #         await conn.run_sync(Base.metadata.create_all)
+                #         logger.info("Create Database tables")
                         
                 
 
-                await create_tables()
+                # await create_tables()
                 logger.info("Database initialized successfully.")
             except Exception as e:
                 logger.error(f"Failed to initialize the database: {e}")
